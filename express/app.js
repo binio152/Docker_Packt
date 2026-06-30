@@ -36,8 +36,6 @@ app.post("/users/signup", (req, res) => {
   res.status(201).json({ message: "User register" });
 });
 
-
-
 export { app };
 
 export default app;
