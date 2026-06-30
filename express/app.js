@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send(`Say Hello from ${process.env.APP_NAME}`);
 });
 
 app.get("/users/:id", (req, res) => {

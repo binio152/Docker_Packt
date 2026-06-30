@@ -9,4 +9,5 @@ COPY /express/index.js index.js
 COPY /express/app.js app.js
 
 ENV PORT=3636
+ENV APP_NAME="binio152"
 CMD [ "node", "index.js" ]
