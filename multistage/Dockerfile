@@ -1,15 +1,18 @@
-FROM node:22.21.1-alpine3.21 AS build
+FROM node:22-alpine AS build
 WORKDIR /app
 COPY package*.json .
 RUN npm ci
+COPY tsconfig.json .
+COPY . .
+RUN npm run build
 
 
 FROM gcr.io/distroless/nodejs22
 WORKDIR /app
 COPY --from=build /app/node_modules node_modules
-COPY . .
+COPY --from=build /app/dist .
 
-ENV PORT=3000
+ENV PORT=3636
 
 # ENTRYPOINT [ "node" ]
 CMD ["./index.js" ]
